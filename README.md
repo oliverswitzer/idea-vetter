@@ -1,8 +1,8 @@
-# MVP Vetter
+# Idea Vetter
 
-A project-scoped Claude Code system that turns Claude into a skeptical, evidence-driven SaaS and app idea vetting agent.
+A Claude Code project that vets SaaS and app ideas with real evidence instead of vibes.
 
-Give it a raw idea. It researches the market, finds competitors, mines user complaints, scores the opportunity, and produces a structured report with a clear verdict: **proceed, pivot, niche down, or kill**.
+Describe a product idea. Idea Vetter researches the market, finds competitors, mines user complaints, scores the opportunity, and produces a structured report with a clear verdict: **proceed, pivot, niche down, or kill**.
 
 ## How It Works
 
@@ -19,8 +19,8 @@ No configuration lives in your home directory. Everything is project-scoped and 
 
 ```bash
 # 1. Clone and enter
-git clone <repo-url> mvp-vetter
-cd mvp-vetter
+git clone <repo-url> idea-vetter
+cd idea-vetter
 
 # 2. Launch Claude Code
 claude
@@ -44,7 +44,7 @@ requests in one place, replacing email threads and Slack messages.
 ## Repo Structure
 
 ```
-mvp-vetter/
+idea-vetter/
 ├── .claude/
 │   ├── CLAUDE.md                  # Main orchestrator instructions
 │   ├── settings.json              # Project-scoped permissions
