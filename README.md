@@ -1,0 +1,137 @@
+# MVP Vetter
+
+A project-scoped Claude Code system that turns Claude into a skeptical, evidence-driven SaaS and app idea vetting agent.
+
+Give it a raw idea. It researches the market, finds competitors, mines user complaints, scores the opportunity, and produces a structured report with a clear verdict: **proceed, pivot, niche down, or kill**.
+
+## How It Works
+
+This repo is a self-contained Claude Code project. When you open Claude Code in this directory, it automatically loads:
+
+- **Orchestrator** (`.claude/CLAUDE.md`) - The main Idea Vetter persona and workflow
+- **Skills** (`.claude/skills/`) - Reusable playbooks for scoping, synthesis, and report writing
+- **Subagents** (`.claude/agents/`) - Specialist agents for focused research tasks
+- **MCP servers** (`.mcp.json`) - External tools for web search, trends, app stores, and document export
+
+No configuration lives in your home directory. Everything is project-scoped and version controlled.
+
+## Quick Start
+
+```bash
+# 1. Clone and enter
+git clone <repo-url> mvp-vetter
+cd mvp-vetter
+
+# 2. Launch Claude Code
+claude
+```
+
+Then run the setup agent to check dependencies and configure everything automatically:
+
+```
+Run the setup-assistant agent to check my environment and set everything up.
+```
+
+The agent will check for Node, Python/uvx, Docker, Pandoc, and Playwright — install what's missing, create your `.env`, optionally start SearXNG, and initialize git. See [docs/setup.md](docs/setup.md) for manual steps if you prefer.
+
+Once setup is done, describe your idea:
+
+```
+Vet this idea: a tool that helps freelance designers manage client revision
+requests in one place, replacing email threads and Slack messages.
+```
+
+## Repo Structure
+
+```
+mvp-vetter/
+├── .claude/
+│   ├── CLAUDE.md                  # Main orchestrator instructions
+│   ├── settings.json              # Project-scoped permissions
+│   ├── agents/
+│   │   ├── idea-vetter.md         # Deep idea evaluation
+│   │   ├── trend-researcher.md    # Trend and demand signals
+│   │   ├── app-store-analyst.md   # App store competitive analysis
+│   │   └── report-writer.md       # Final report composition
+│   └── skills/
+│       ├── idea-scoper/
+│       │   └── SKILL.md           # Break ideas into structured components
+│       ├── market-evidence-synthesizer/
+│       │   └── SKILL.md           # Score and cluster raw evidence
+│       └── report-composer/
+│           └── SKILL.md           # Assemble the final report
+├── .mcp.json                      # Project-scoped MCP server config
+├── docs/
+│   ├── setup.md                   # Installation guide
+│   ├── usage.md                   # How to use the system
+│   └── mcp_servers.md             # MCP server reference and swap guide
+├── examples/
+│   ├── vet-saas-idea.md           # Example: vet a SaaS idea
+│   ├── analyze-app-category.md    # Example: analyze an app market
+│   └── generate-report.md         # Example: produce a report
+├── reports/                       # Generated vetting reports (markdown)
+├── .env.example                   # Environment variable template
+├── .gitignore
+└── README.md
+```
+
+## Workflow Phases
+
+| Phase | What Happens | Key Tools |
+|---|---|---|
+| 1. Frame | Decompose the idea into user, problem, assumptions | idea-scoper skill |
+| 2. Research | Gather evidence from web, trends, app stores, forums | trend-researcher, app-store-analyst, SearXNG, Playwright |
+| 3. Synthesize | Cluster pain points, score evidence, map gaps | market-evidence-synthesizer skill |
+| 4. Challenge | Argue against the idea, flag weak evidence | idea-vetter agent |
+| 5. Recommend | Propose wedge, MVP, verdict | report-composer skill, report-writer agent |
+
+## MCP Servers
+
+| Server | Purpose | Requires |
+|---|---|---|
+| mcp-searxng-enhanced | Web search and scraping | SearXNG instance (Docker) |
+| playwright-mcp-server | Browser automation | Chromium |
+| google-trends-mcp | Google Trends data | Nothing |
+| google-news-trends-mcp | News trend signals | Nothing |
+| mcp-appstore | App store intelligence | Nothing |
+| mcp-pandoc | Report export (PDF/DOCX) | Pandoc binary |
+
+See [docs/mcp_servers.md](docs/mcp_servers.md) for detailed setup and alternatives.
+
+## Scoring Rubric
+
+Every idea gets scored on 9 dimensions (1-10):
+
+| Dimension | What It Measures |
+|---|---|
+| Problem severity | How painful is the problem? |
+| Frequency | How often does it occur? |
+| Urgency | How time-sensitive? |
+| Willingness to pay | Evidence people will pay |
+| Competition pressure | How crowded? (10 = open field) |
+| Accessibility | How easy to reach customers? |
+| Defensibility | Moats, switching costs, network effects |
+| Speed to MVP | How fast can you test this? |
+| Overall opportunity | Composite judgment |
+
+## Limitations
+
+- **Evidence quality depends on tools**: If SearXNG is down or app store APIs are rate-limited, evidence will be thinner. The system flags this when it happens.
+- **No proprietary data**: This system uses public sources only. It cannot access paid databases like Sensor Tower, data.ai, or SimilarWeb.
+- **LLM judgment**: Scoring is Claude's judgment based on evidence, not a formula. Use it as input to your own thinking, not as gospel.
+- **Recency**: Web search and trend data are only as current as the sources. Always check dates.
+- **Not financial advice**: This is a research and analysis tool, not a substitute for talking to actual customers.
+
+## Extending the System
+
+- **Add a new MCP server**: Edit `.mcp.json`, update agent frontmatter, document in `docs/mcp_servers.md`
+- **Add a new skill**: Create `.claude/skills/<name>/SKILL.md` following the existing pattern
+- **Add a new subagent**: Create `.claude/agents/<name>.md` with frontmatter and instructions
+- **Customize the scoring rubric**: Edit `.claude/CLAUDE.md`
+- **Change the report format**: Edit `.claude/skills/report-composer/SKILL.md`
+
+## Documentation
+
+- [Setup Guide](docs/setup.md) - Installation and configuration
+- [Usage Guide](docs/usage.md) - How to use the system
+- [MCP Server Reference](docs/mcp_servers.md) - Server details, alternatives, and troubleshooting
