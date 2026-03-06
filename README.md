@@ -1,6 +1,17 @@
 # Idea Vetter
 
-A Claude Code project that vets SaaS and app ideas with real evidence instead of vibes.
+<p align="center">
+  <img src="docs/idea-vetter.png" alt="Idea Vetter" width="80%">
+</p>
+
+<p align="center">
+  <strong>Vet SaaS and app ideas with real evidence, not vibes.</strong>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://github.com/oliverswitzer/idea-vetter"><img src="https://img.shields.io/badge/claude--code-project-blueviolet" alt="Claude Code Project"></a>
+</p>
 
 Describe a product idea. Idea Vetter researches the market, finds competitors, mines user complaints, scores the opportunity, and produces a structured report with a clear verdict: **proceed, pivot, niche down, or kill**.
 
