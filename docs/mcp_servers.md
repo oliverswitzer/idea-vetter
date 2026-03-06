@@ -6,38 +6,13 @@ All MCP servers are configured in `.mcp.json` at the project root. Claude Code l
 
 | Server | Purpose | Transport | Requires |
 |---|---|---|---|
-| mcp-searxng-enhanced | Web search and page scraping | uvx | SearXNG instance (Docker) |
-| playwright-mcp-server | Browser automation, screenshots | npx | Chromium (`npx playwright install`) |
+| @playwright/mcp | Browser automation, screenshots | npx | Chromium (`npx playwright install`) |
 | google-trends-mcp | Google Trends data | uvx | None |
-| google-news-trends-mcp | News-based trend signals | uvx | None |
-| mcp-appstore | App store search and reviews | npx | None |
 | mcp-pandoc | Document conversion | uvx | Pandoc binary |
 
 ---
 
-## mcp-searxng-enhanced
-
-**Why**: Primary tool for web search across categories (general, news, science, IT, forums). Also supports page content scraping.
-
-**Install**:
-```bash
-# Start a local SearXNG instance
-docker run -d -p 8080:8080 --name searxng searxng/searxng
-```
-
-**Environment variables**:
-- `SEARXNG_BASE_URL` - URL of your SearXNG instance (default: `http://localhost:8080`)
-
-**Example usage in this repo**:
-- Search for competitor products by keyword
-- Search forums and Reddit for user complaints
-- Scrape pricing pages for competitor analysis
-
-**Links**: [npm](https://www.npmjs.com/package/mcp-searxng-enhanced) | [GitHub](https://github.com/search?q=mcp-searxng-enhanced)
-
----
-
-## playwright-mcp-server
+## @playwright/mcp
 
 **Why**: Automates browser interactions for scraping dynamic pages, capturing screenshots of competitor products, and navigating sites that require JavaScript.
 
@@ -53,7 +28,7 @@ npx playwright install chromium
 - Navigate and scrape JavaScript-heavy product pages
 - Capture pricing tables that load dynamically
 
-**Links**: [npm](https://www.npmjs.com/package/@anthropic/playwright-mcp-server)
+**Links**: [npm](https://www.npmjs.com/package/@playwright/mcp)
 
 ---
 
@@ -72,41 +47,6 @@ npx playwright install chromium
 - Find related queries that reveal user intent
 
 **Links**: [PyPI](https://pypi.org/project/google-trends-mcp/)
-
----
-
-## google-news-trends-mcp
-
-**Why**: Surfaces trending news topics and recent coverage. Useful for detecting market shifts, funding rounds, and emerging categories.
-
-**Install**: No pre-installation needed (runs via `uvx`).
-
-**Environment variables**: None required.
-
-**Example usage in this repo**:
-- Find recent funding rounds in a space
-- Detect emerging trends before they show in search volume
-- Identify regulatory or market changes affecting an idea
-
-**Links**: [PyPI](https://pypi.org/project/google-news-trends-mcp/)
-
----
-
-## mcp-appstore
-
-**Why**: Searches and retrieves app listings, ratings, reviews, and metadata from iOS App Store and Google Play. Critical for mobile-related ideas.
-
-**Install**: No pre-installation needed (runs via `npx`).
-
-**Environment variables**: None required.
-
-**Example usage in this repo**:
-- Search for competing apps by keyword
-- Retrieve ratings, review counts, and pricing
-- Read user reviews to mine complaints and feature requests
-- Track when competitors last updated their apps
-
-**Links**: [npm](https://www.npmjs.com/package/mcp-appstore)
 
 ---
 
@@ -147,7 +87,6 @@ To add a new server:
 3. Document the server in this file
 
 Common alternatives:
-- **Tavily** or **Brave Search** instead of SearXNG (if you want API-based search without self-hosting)
 - **Puppeteer MCP** instead of Playwright
 - **SerpAPI MCP** for structured Google results
 - **data.ai** or **Sensor Tower** APIs for deeper app store intelligence (if you have access)

@@ -1,32 +1,14 @@
 {
   "mcpServers": {
-    "searxng": {
-      "command": "uvx",
-      "args": ["mcp-searxng-enhanced"],
-      "env": {
-        "SEARXNG_BASE_URL": "${SEARXNG_BASE_URL}"
-      },
-      "_comment": "Category-aware web search and page scraping. Requires a SearXNG instance."
-    },
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@anthropic/playwright-mcp-server"],
+      "args": ["-y", "@playwright/mcp"],
       "_comment": "Browser automation and screenshots. Requires: npx playwright install chromium"
     },
     "google-trends": {
       "command": "uvx",
       "args": ["google-trends-mcp"],
       "_comment": "Google Trends data for search interest, seasonality, and related queries."
-    },
-    "google-news-trends": {
-      "command": "uvx",
-      "args": ["google-news-trends-mcp"],
-      "_comment": "Google News trending topics and news-based trend signals."
-    },
-    "app-store": {
-      "command": "npx",
-      "args": ["-y", "mcp-appstore"],
-      "_comment": "App store search, listings, ratings, and reviews for iOS and Android."
     },
     "pandoc": {
       "command": "uvx",

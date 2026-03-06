@@ -10,7 +10,6 @@
 
 | Dependency | Required For | Install |
 |---|---|---|
-| Docker | SearXNG instance | [docker.com](https://docs.docker.com/get-docker/) |
 | Pandoc | Report export (PDF/DOCX) | `brew install pandoc` |
 | TeX (BasicTeX) | PDF export via Pandoc | `brew install --cask basictex` |
 | Playwright browsers | Browser automation | `npx playwright install chromium` |
@@ -24,31 +23,14 @@ git clone <repo-url> mvp-vetter
 cd mvp-vetter
 ```
 
-### 2. Set up environment variables
-
-```bash
-cp .env.example .env
-# Edit .env with your values
-```
-
-### 3. Install MCP server dependencies
+### 2. Install MCP server dependencies
 
 Most MCP servers are installed on-demand via `npx` or `uvx`. No pre-installation needed for:
-- `playwright-mcp-server` (npx)
+- `@playwright/mcp` (npx)
 - `google-trends-mcp` (uvx)
-- `google-news-trends-mcp` (uvx)
-- `mcp-appstore` (uvx/npx)
 - `mcp-pandoc` (uvx)
 
-For **SearXNG**, you need a running instance:
-
-```bash
-# Option A: Run locally with Docker
-docker run -d -p 8080:8080 --name searxng searxng/searxng
-
-# Option B: Use a public instance (less reliable)
-# Set SEARXNG_BASE_URL in .env to a public instance URL
-```
+> **Note:** `.env` and `.env.example` exist in the repo but are **not currently needed**. They are reserved for future use (e.g., API keys).
 
 For **Playwright** browser automation:
 
@@ -56,7 +38,7 @@ For **Playwright** browser automation:
 npx playwright install chromium
 ```
 
-### 4. Verify the setup
+### 3. Verify the setup
 
 Open Claude Code in the project directory:
 
@@ -73,11 +55,6 @@ Claude should load the project instructions from `.claude/CLAUDE.md` automatical
 - Ensure `.mcp.json` is in the project root
 - Check that `uvx` and `npx` are on your PATH
 - Try running the server command manually to see errors
-
-### SearXNG connection refused
-- Verify Docker is running: `docker ps`
-- Check the container: `docker logs searxng`
-- Ensure `SEARXNG_BASE_URL` matches your instance
 
 ### Pandoc export fails
 - Verify pandoc is installed: `pandoc --version`

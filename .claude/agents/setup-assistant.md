@@ -20,34 +20,25 @@ If any are missing, explain how to install them and stop.
 
 ### Step 2: Check Optional Dependencies
 ```bash
-docker --version
 pandoc --version
 npx playwright --version
 ```
 Report which are missing. Explain what each enables and let the user decide.
 
-### Step 3: Set Up Environment File
-Check if `.env` exists. If not, copy from `.env.example`. Prompt the user to fill in values if needed.
+Note: `.env` / `.env.example` exist in the repo but are **not currently needed**. They are reserved for future use (e.g., API keys). No action required.
 
-### Step 4: Start SearXNG (if Docker is available)
-Check if a SearXNG container exists:
-```bash
-docker ps -a --filter name=searxng --format '{{.Names}} {{.Status}}'
-```
-Offer to start it if not running. If Docker is unavailable, note that built-in WebSearch will be used instead.
-
-### Step 5: Install Playwright Browsers (if user wants browser automation)
+### Step 3: Install Playwright Browsers (if user wants browser automation)
 ```bash
 npx playwright install chromium
 ```
 
-### Step 6: Initialize Git (if not already a repo)
+### Step 5: Initialize Git (if not already a repo)
 ```bash
 git init && git add -A && git commit -m "Initial commit: MVP Vetter project scaffold"
 ```
 
-### Step 7: Validate MCP Configuration
+### Step 6: Validate MCP Configuration
 Read `.mcp.json` and verify the file is valid JSON and server commands are available on PATH.
 
-### Step 8: Print Status Summary
+### Step 7: Print Status Summary
 Print a table showing the status of each dependency and configuration item.

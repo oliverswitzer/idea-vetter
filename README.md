@@ -43,7 +43,7 @@ Then run the setup agent to check dependencies and configure everything automati
 Run the setup-assistant agent to check my environment and set everything up.
 ```
 
-The agent will check for Node, Python/uvx, Docker, Pandoc, and Playwright — install what's missing, create your `.env`, optionally start SearXNG, and initialize git. See [docs/setup.md](docs/setup.md) for manual steps if you prefer.
+The agent will check for Node, Python/uvx, Pandoc, and Playwright — install what's missing and initialize git. See [docs/setup.md](docs/setup.md) for manual steps if you prefer.
 
 Once setup is done, describe your idea:
 
@@ -91,7 +91,7 @@ idea-vetter/
 | Phase | What Happens | Key Tools |
 |---|---|---|
 | 1. Frame | Decompose the idea into user, problem, assumptions | idea-scoper skill |
-| 2. Research | Gather evidence from web, trends, app stores, forums | trend-researcher, app-store-analyst, SearXNG, Playwright |
+| 2. Research | Gather evidence from web, trends, app stores, forums | trend-researcher, app-store-analyst, WebSearch, Playwright |
 | 3. Synthesize | Cluster pain points, score evidence, map gaps | market-evidence-synthesizer skill |
 | 4. Challenge | Argue against the idea, flag weak evidence | idea-vetter agent |
 | 5. Recommend | Propose wedge, MVP, verdict | report-composer skill, report-writer agent |
@@ -100,11 +100,8 @@ idea-vetter/
 
 | Server | Purpose | Requires |
 |---|---|---|
-| mcp-searxng-enhanced | Web search and scraping | SearXNG instance (Docker) |
-| playwright-mcp-server | Browser automation | Chromium |
+| @playwright/mcp | Browser automation | Chromium |
 | google-trends-mcp | Google Trends data | Nothing |
-| google-news-trends-mcp | News trend signals | Nothing |
-| mcp-appstore | App store intelligence | Nothing |
 | mcp-pandoc | Report export (PDF/DOCX) | Pandoc binary |
 
 See [docs/mcp_servers.md](docs/mcp_servers.md) for detailed setup and alternatives.
@@ -127,7 +124,7 @@ Every idea gets scored on 9 dimensions (1-10):
 
 ## Limitations
 
-- **Evidence quality depends on tools**: If SearXNG is down or app store APIs are rate-limited, evidence will be thinner. The system flags this when it happens.
+- **Evidence quality depends on tools**: If web search or app store pages are rate-limited, evidence will be thinner. The system flags this when it happens.
 - **No proprietary data**: This system uses public sources only. It cannot access paid databases like Sensor Tower, data.ai, or SimilarWeb.
 - **LLM judgment**: Scoring is Claude's judgment based on evidence, not a formula. Use it as input to your own thinking, not as gospel.
 - **Recency**: Web search and trend data are only as current as the sources. Always check dates.
