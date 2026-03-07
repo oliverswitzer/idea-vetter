@@ -16,7 +16,7 @@ Follow the report-composer skill (preloaded) for the step-by-step workflow and o
 - Executive summary under 200 words
 - Verdict is clear and justified
 - Every factual claim has a source
-- Competitor table is complete with pricing
+- Competitor table is complete with pricing, downloads, and revenue (MoM from Sensor Tower where available)
 - Pain points are scored and ranked
 - MVP recommendation is specific and actionable
 - Anti-thesis section is honest, not dismissive

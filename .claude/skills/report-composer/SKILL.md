@@ -24,7 +24,9 @@ Pull from the idea scope: user, job, trigger, outcome, key assumptions.
 Summarize search volume, trend direction, seasonality, related queries. Include data tables if available.
 
 ## Step 5: Map Competitor Landscape
-Table format: name, positioning, pricing, strengths, weaknesses, notable gaps.
+Table format: name, positioning, pricing, monthly downloads (Sensor Tower), monthly revenue (Sensor Tower), strengths, weaknesses, notable gaps.
+
+Include a "Revenue Landscape" summary below the table: which apps are making real money, what revenue tier the market sits in, and what that implies about willingness to pay. If Sensor Tower data is bucketed (e.g. `< $5k`), report the bucket and interpret it.
 
 ## Step 6: Present Pain Points
 Use the scored clusters from the evidence synthesis. Include representative quotes with attribution.
@@ -36,7 +38,11 @@ List the most significant gaps with supporting evidence.
 For each segment: who they are, why they are underserved, size estimate if possible.
 
 ## Step 9: Present Money Signals
-Evidence of willingness to pay, organized by signal type.
+Evidence of willingness to pay, organized by signal type. This must include:
+- Sensor Tower revenue estimates for top competitors (with source noted as Sensor Tower)
+- IAP pricing tiers observed across competitor apps
+- Any paid/subscription apps with meaningful download volume
+- Pricing language signals from app store descriptions or reviews
 
 ## Step 10: List Communities and Channels
 Where do target users gather? Forums, subreddits, Slack groups, newsletters, conferences.
