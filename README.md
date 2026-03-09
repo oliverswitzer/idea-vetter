@@ -63,6 +63,7 @@ idea-vetter/
 │   │   ├── idea-vetter.md         # Deep idea evaluation
 │   │   ├── trend-researcher.md    # Trend and demand signals
 │   │   ├── app-store-analyst.md   # App store competitive analysis
+│   │   ├── influencer-scout.md    # YouTube influencer discovery
 │   │   └── report-writer.md       # Final report composition
 │   └── skills/
 │       ├── idea-scoper/
