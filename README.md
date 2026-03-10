@@ -20,7 +20,7 @@ Describe a product idea. Idea Vetter researches the market, finds competitors, m
 This repo is a self-contained Claude Code project. When you open Claude Code in this directory, it automatically loads:
 
 - **Orchestrator** (`.claude/CLAUDE.md`) - The main Idea Vetter persona and workflow
-- **Skills** (`.claude/skills/`) - Reusable playbooks for scoping, synthesis, and report writing
+- **Skills** (`.claude/skills/`) - Reusable playbooks owned by specific agents (named `<agent>.<skill>`)
 - **Subagents** (`.claude/agents/`) - Specialist agents for focused research tasks
 - **MCP servers** (`.mcp.json`) - External tools for web search, trends, app stores, and document export
 
@@ -66,12 +66,12 @@ idea-vetter/
 │   │   ├── influencer-scout.md    # YouTube influencer discovery
 │   │   └── report-writer.md       # Final report composition
 │   └── skills/
-│       ├── idea-scoper/
-│       │   └── SKILL.md           # Break ideas into structured components
-│       ├── market-evidence-synthesizer/
-│       │   └── SKILL.md           # Score and cluster raw evidence
-│       └── report-composer/
-│           └── SKILL.md           # Assemble the final report
+│       ├── idea-vetter.idea-scoper/
+│       │   └── SKILL.md           # Break ideas into structured components (owned by idea-vetter)
+│       ├── idea-vetter.market-evidence-synthesizer/
+│       │   └── SKILL.md           # Score and cluster raw evidence (owned by idea-vetter)
+│       └── report-writer.report-composer/
+│           └── SKILL.md           # Assemble the final report (owned by report-writer)
 ├── .mcp.json                      # Project-scoped MCP server config
 ├── docs/
 │   ├── setup.md                   # Installation guide
@@ -91,11 +91,11 @@ idea-vetter/
 
 | Phase | What Happens | Key Tools |
 |---|---|---|
-| 1. Frame | Decompose the idea into user, problem, assumptions | idea-scoper skill |
-| 2. Research | Gather evidence from web, trends, app stores, forums | trend-researcher, app-store-analyst, WebSearch, Playwright |
-| 3. Synthesize | Cluster pain points, score evidence, map gaps | market-evidence-synthesizer skill |
-| 4. Challenge | Argue against the idea, flag weak evidence | idea-vetter agent |
-| 5. Recommend | Propose wedge, MVP, verdict | report-composer skill, report-writer agent |
+| 1. Frame | Decompose the idea into user, problem, assumptions | `idea-vetter` agent → `idea-vetter.idea-scoper` skill |
+| 2. Research | Gather evidence from web, trends, app stores, forums; find influencers for go-to-market | `trend-researcher`, `app-store-analyst`, `influencer-scout`, WebSearch, Playwright |
+| 3. Synthesize | Cluster pain points, score evidence, map gaps | `idea-vetter` agent → `idea-vetter.market-evidence-synthesizer` skill |
+| 4. Challenge | Argue against the idea, flag weak evidence | `idea-vetter` agent |
+| 5. Recommend | Propose wedge, MVP, verdict | `report-writer` agent → `report-writer.report-composer` skill |
 
 ## MCP Servers
 
@@ -134,10 +134,10 @@ Every idea gets scored on 9 dimensions (1-10):
 ## Extending the System
 
 - **Add a new MCP server**: Edit `.mcp.json`, update agent frontmatter, document in `docs/mcp_servers.md`
-- **Add a new skill**: Create `.claude/skills/<name>/SKILL.md` following the existing pattern
+- **Add a new skill**: Create `.claude/skills/<agent>.<skill>/SKILL.md` and declare it in the owning agent's `skills:` frontmatter
 - **Add a new subagent**: Create `.claude/agents/<name>.md` with frontmatter and instructions
 - **Customize the scoring rubric**: Edit `.claude/CLAUDE.md`
-- **Change the report format**: Edit `.claude/skills/report-composer/SKILL.md`
+- **Change the report format**: Edit `.claude/skills/report-writer.report-composer/SKILL.md`
 
 ## Documentation
 

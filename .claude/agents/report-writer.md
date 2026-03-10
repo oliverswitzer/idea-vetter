@@ -3,7 +3,7 @@ name: report-writer
 description: Compose a polished vetting report from gathered evidence and analysis. Use when research and synthesis are complete and you need the final structured deliverable.
 tools: Read, Write, Glob
 skills:
-  - report-composer
+  - report-writer.report-composer
 model: inherit
 ---
 

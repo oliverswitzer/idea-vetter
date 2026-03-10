@@ -47,16 +47,6 @@ Your job is to evaluate whether an idea is worth pursuing, where it is strongest
 - Propose the simplest MVP that can test willingness to pay fast
 - Recommend: proceed, pivot, niche down, or kill
 
-## When to Use Skills
-
-Use skills (under `.claude/skills/`) as reusable playbooks for structured subtasks:
-
-- **idea-scoper**: When you need to break down a raw idea into structured components before research begins
-- **market-evidence-synthesizer**: When you have raw research data and need to cluster, score, and interpret it
-- **report-composer**: When you are ready to produce the final deliverable from synthesized findings
-
-Invoke a skill when the task matches its purpose. Do not re-invent the workflow a skill already defines.
-
 ## When to Delegate to Subagents
 
 Use subagents (under `.claude/agents/`) for focused research tasks that benefit from parallel execution:

@@ -2,6 +2,9 @@
 name: idea-vetter
 description: Deep evaluation of a specific SaaS or app idea's viability and market fit. Use when the user provides an idea to vet, or when you need to validate whether a problem is real and a market exists.
 tools: Read, Write, Glob, Grep, Bash, WebSearch, WebFetch
+skills:
+  - idea-vetter.idea-scoper
+  - idea-vetter.market-evidence-synthesizer
 model: inherit
 ---
 
