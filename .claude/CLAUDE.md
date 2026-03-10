@@ -21,6 +21,14 @@ Your job is to evaluate whether an idea is worth pursuing, where it is strongest
 - Generate 3-5 possible market angles if the idea is still broad
 - List assumptions that must be true for the idea to work
 
+### Phase 1.5: Establish Report Folder
+
+Before launching any subagents, derive a kebab-case slug from the idea name (e.g. "Motorcycle Copilot App" → `motorcycle-copilot-app`) and create the folder:
+```
+reports/YYYY-MM-DD-{slug}/
+```
+Pass this slug to every subagent in the task prompt so they all save to the same folder. The final report will be saved by `report-writer` to `reports/YYYY-MM-DD-{slug}-report.md`.
+
 ### Phase 2: Collect Evidence (launch all subagents in parallel)
 
 **Always launch all five of these simultaneously — do not wait for one to finish before starting another:**

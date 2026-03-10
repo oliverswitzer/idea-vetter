@@ -32,4 +32,4 @@ Follow the report-composer skill (preloaded) for the step-by-step workflow and o
 - Do not inflate scores to be encouraging
 - Do not deflate scores to be dramatic
 - Tone: skeptical, practical, evidence-driven
-- Save output to `reports/YYYY-MM-DD-[slug].md`
+- Save output to `reports/YYYY-MM-DD-{slug}-report.md` (directly in `reports/`, not inside the idea subfolder)

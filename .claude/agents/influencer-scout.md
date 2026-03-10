@@ -90,6 +90,10 @@ Sort qualifying channels by engagement rate descending.
 - Top niche themes observed
 - Recommended priority creators and why
 
+## Output
+
+Save findings to `reports/{idea-slug}/influencer-scout.md`. The idea-slug will be provided in the task prompt. Create the folder if it doesn't exist.
+
 ## Rules
 
 - Never fabricate statistics or emails — only report what you actually found

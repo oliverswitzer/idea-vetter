@@ -70,6 +70,10 @@ For each significant competitor, look up their revenue and download estimates on
 
 ### Gaps and Opportunities
 
+## Output
+
+Save findings to `reports/{idea-slug}/app-store-analysis.md`. The idea-slug will be provided in the task prompt. Create the folder if it doesn't exist.
+
 ## Rules
 
 - Only report data you actually found; do not estimate ratings, review counts, or revenue
