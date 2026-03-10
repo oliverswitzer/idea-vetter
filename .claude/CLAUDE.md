@@ -21,12 +21,16 @@ Your job is to evaluate whether an idea is worth pursuing, where it is strongest
 - Generate 3-5 possible market angles if the idea is still broad
 - List assumptions that must be true for the idea to work
 
-### Phase 2: Collect Evidence
-- Search for pain in public discussions, reviews, comments, community threads
-- Search for existing products, pricing pages, app listings, comparison pages
-- Gather trend and demand signals: search demand, growth, seasonality, related queries
-- Capture monetization clues: paid competitors, pricing tiers, premium plans, intent language
-- Prefer primary evidence and first-person complaints over summaries
+### Phase 2: Collect Evidence (launch all subagents in parallel)
+
+**Always launch all four of these simultaneously — do not wait for one to finish before starting another:**
+
+1. **trend-researcher** — search volume, seasonality, demand trajectory, related queries
+2. **app-store-analyst** — competitor apps, ratings, reviews, pricing, revenue estimates
+3. **idea-vetter** — deep web research: forums, Reddit, communities, pain evidence, monetization signals
+4. **influencer-scout** — YouTube creators in the niche ranked by engagement rate and comment activity
+
+All four run independently and can execute in parallel. Collect all results before moving to Phase 3.
 
 ### Phase 3: Synthesize
 - Cluster recurring complaints into pain point themes
@@ -47,19 +51,22 @@ Your job is to evaluate whether an idea is worth pursuing, where it is strongest
 - Propose the simplest MVP that can test willingness to pay fast
 - Recommend: proceed, pivot, niche down, or kill
 
+### Phase 6: Write the Report
+- Launch **report-writer** with all synthesized findings from Phases 2-5
+- Include influencer-scout results in the Communities and Channels section
+
 ## When to Delegate to Subagents
 
-Use subagents (under `.claude/agents/`) for focused research tasks that benefit from parallel execution:
+Use subagents (under `.claude/agents/`) for focused research tasks:
 
-- **idea-vetter**: Deep evaluation of a specific idea's viability and market fit
-- **trend-researcher**: Gathering trend data, search volume, seasonality, and demand signals
-- **app-store-analyst**: Analyzing app store listings, ratings, reviews, and competitive positioning
-- **influencer-scout**: Finding YouTube influencers for go-to-market outreach in a given niche
-- **tech-feasibility**: Assessing build complexity, required integrations, data availability, technical blockers, and dependency risks
-- **report-writer**: Composing the final structured report from gathered evidence
-- **setup-assistant**: Run on first use or when troubleshooting. Checks dependencies, installs MCP servers, configures environment, and initializes git.
+- **idea-vetter**: Deep web research — forums, Reddit, pain evidence, monetization signals
+- **trend-researcher**: Search volume, seasonality, demand trajectory, related queries
+- **app-store-analyst**: Competitor apps, ratings, reviews, pricing, revenue estimates
+- **influencer-scout**: YouTube creators ranked by engagement rate for go-to-market outreach
+- **report-writer**: Composing the final structured report from all gathered evidence
+- **setup-assistant**: Run on first use or when troubleshooting environment issues
 
-Launch multiple subagents in parallel when their tasks are independent (e.g., trend research + app store analysis).
+**When vetting an idea, always launch idea-vetter, trend-researcher, app-store-analyst, and influencer-scout together in a single message as parallel tool calls.** Never run them sequentially — they are independent and parallelism is essential to performance.
 
 ## Evidence Standards
 
