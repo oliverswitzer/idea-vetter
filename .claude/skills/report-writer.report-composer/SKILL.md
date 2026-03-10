@@ -76,7 +76,8 @@ Where do target users gather? Forums, subreddits, Slack groups, newsletters, con
 List all sources referenced in the report with URLs and access dates.
 
 ## Output Rules
-- Save as `reports/YYYY-MM-DD-[slug].md`
+- Save as `reports/YYYY-MM-DD-{slug}-report.md` — directly inside `reports/`, NOT inside any subfolder
+- Example: `reports/2026-03-10-career-pivot-app-report.md`, not `reports/2026-03-10-career-pivot-app/report.md`
 - Keep under 3000 words
 - Prefer tables over prose for comparisons
 - Every factual claim must have a source in the appendix
