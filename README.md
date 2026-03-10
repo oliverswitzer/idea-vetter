@@ -63,7 +63,7 @@ idea-vetter/
 │   │   ├── idea-vetter.md         # Deep idea evaluation
 │   │   ├── trend-researcher.md    # Trend and demand signals
 │   │   ├── app-store-analyst.md   # App store competitive analysis
-│   │   ├── influencer-scout.md    # YouTube influencer discovery
+│   │   ├── marketing-channel-scout.md # Reddit, YouTube, TikTok, Instagram discovery
 │   │   ├── tech-feasibility.md    # Build complexity and technical risk
 │   │   └── report-writer.md       # Final report composition
 │   └── skills/
@@ -93,7 +93,7 @@ idea-vetter/
 | Phase | What Happens | Key Tools |
 |---|---|---|
 | 1. Frame | Decompose the idea into user, problem, assumptions | `idea-vetter` agent → `idea-vetter.idea-scoper` skill |
-| 2. Research | Gather evidence from web, trends, app stores, forums; assess technical feasibility; find influencers for go-to-market | `trend-researcher`, `app-store-analyst`, `tech-feasibility`, `influencer-scout`, WebSearch, Playwright |
+| 2. Research | Gather evidence from web, trends, app stores, forums; assess technical feasibility; find influencers for go-to-market | `trend-researcher`, `app-store-analyst`, `tech-feasibility`, `marketing-channel-scout`, WebSearch, Playwright |
 | 3. Synthesize | Cluster pain points, score evidence, map gaps | `idea-vetter` agent → `idea-vetter.market-evidence-synthesizer` skill |
 | 4. Challenge | Argue against the idea, flag weak evidence | `idea-vetter` agent |
 | 5. Recommend | Propose wedge, MVP, verdict | `report-writer` agent → `report-writer.report-composer` skill |

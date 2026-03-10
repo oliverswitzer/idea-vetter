@@ -36,7 +36,7 @@ Pass this slug to every subagent in the task prompt so they all save to the same
 1. **trend-researcher** — search volume, seasonality, demand trajectory, market size, funding signals
 2. **app-store-analyst** — competitor apps, ratings, reviews, pricing, revenue estimates
 3. **idea-vetter** — deep web research: forums, Reddit, communities, pain evidence, monetization signals
-4. **influencer-scout** — YouTube creators in the niche ranked by engagement rate and comment activity
+4. **marketing-channel-scout** — Reddit communities, YouTube/TikTok/Instagram creators ranked by engagement rate and audience fit
 5. **tech-feasibility** — build complexity, required APIs/integrations, data availability, technical blockers
 
 All five run independently and can execute in parallel. Collect all results before moving to Phase 3.
@@ -62,7 +62,7 @@ All five run independently and can execute in parallel. Collect all results befo
 
 ### Phase 6: Write the Report
 - Launch **report-writer** with all synthesized findings from Phases 2-5
-- Include influencer-scout results in the Communities and Channels section
+- Include marketing-channel-scout results in the Communities and Channels section
 
 ## When to Delegate to Subagents
 
@@ -71,12 +71,12 @@ Use subagents (under `.claude/agents/`) for focused research tasks:
 - **idea-vetter**: Forums, Reddit, communities, pain evidence, user complaints, monetization signals
 - **trend-researcher**: Search volume, seasonality, market size, funding rounds, demand trajectory — quantitative signals only, no community research
 - **app-store-analyst**: Competitor apps, ratings, reviews, pricing, revenue estimates
-- **influencer-scout**: YouTube creators ranked by engagement rate for go-to-market outreach
+- **marketing-channel-scout**: Reddit communities, YouTube/TikTok/Instagram creators — ranked by engagement rate, audience fit, and estimated cost
 - **tech-feasibility**: Build complexity, APIs, data availability, integrations, technical blockers
 - **report-writer**: Composing the final structured report from all gathered evidence
 - **setup-assistant**: Run on first use or when troubleshooting environment issues
 
-**When vetting an idea, always launch idea-vetter, trend-researcher, app-store-analyst, influencer-scout, and tech-feasibility together in a single message as parallel tool calls.** Never run them sequentially — they are independent and parallelism is essential to performance.
+**When vetting an idea, always launch idea-vetter, trend-researcher, app-store-analyst, marketing-channel-scout, and tech-feasibility together in a single message as parallel tool calls.** Never run them sequentially — they are independent and parallelism is essential to performance.
 
 ## Evidence Standards
 
