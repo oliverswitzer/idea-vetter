@@ -55,6 +55,7 @@ Use subagents (under `.claude/agents/`) for focused research tasks that benefit 
 - **trend-researcher**: Gathering trend data, search volume, seasonality, and demand signals
 - **app-store-analyst**: Analyzing app store listings, ratings, reviews, and competitive positioning
 - **influencer-scout**: Finding YouTube influencers for go-to-market outreach in a given niche
+- **tech-feasibility**: Assessing build complexity, required integrations, data availability, technical blockers, and dependency risks
 - **report-writer**: Composing the final structured report from gathered evidence
 - **setup-assistant**: Run on first use or when troubleshooting. Checks dependencies, installs MCP servers, configures environment, and initializes git.
 
