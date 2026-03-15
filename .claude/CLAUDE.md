@@ -31,18 +31,29 @@ Pass this slug to every subagent in the task prompt so they all save to the same
 
 ### Phase 2: Collect Evidence (launch all subagents in parallel)
 
-**Always launch all six of these simultaneously — do not wait for one to finish before starting another:**
+**Always launch these simultaneously — do not wait for one to finish before starting another.**
+
+#### Choosing the right competitor analyst
+
+Pick **one** based on the idea type:
+
+- **App idea** — use **app-store-analyst**. Trigger keywords: "app", "iOS", "Android", "iPhone", "iPad", "mobile", "App Store", "Google Play".
+- **SaaS idea** — use **saas-competitor-analyzer**. Trigger keywords: "SaaS", "web app", "platform", "dashboard", "software", "tool", "B2B".
+- **If unclear** — default to **saas-competitor-analyzer** for web/software ideas, **app-store-analyst** for anything targeting phone users. Never launch both.
+
+#### Core subagents (always launch)
 
 1. **trend-researcher** — search volume, seasonality, demand trajectory, market size, funding signals
-2. **app-store-analyst** — competitor apps, ratings, reviews, pricing, revenue estimates
-3. **idea-vetter** — deep web research: forums, Reddit, communities, pain evidence, monetization signals
-4. **marketing-channel-scout** — Reddit communities, YouTube/TikTok/Instagram creators ranked by engagement rate and audience fit
-5. **tech-feasibility** — build complexity, required APIs/integrations, data availability, technical blockers
-6. **saas-competitor-analyzer** — web traffic, keywords, CPC/ad spend, tech stack, SEO metrics, funding signals for SaaS competitors
+2. **idea-vetter** — deep web research: forums, Reddit, communities, pain evidence, monetization signals
+3. **marketing-channel-scout** — Reddit communities, YouTube/TikTok/Instagram creators ranked by engagement rate and audience fit
+4. **tech-feasibility** — build complexity, required APIs/integrations, data availability, technical blockers
 
-All six run independently and can execute in parallel. Collect all results before moving to Phase 3.
+#### Conditional subagent (launch exactly one)
 
-**Note:** app-store-analyst and saas-competitor-analyzer both use Playwright and share a single browser session. **Launch app-store-analyst first and saas-competitor-analyzer second** (or with a slight delay) so they don't conflict. Both agents close the browser when done.
+5. **app-store-analyst** — competitor apps, ratings, reviews, pricing, revenue estimates *(app ideas only)*
+6. **saas-competitor-analyzer** — web traffic, keywords, CPC/ad spend, tech stack, SEO metrics, funding signals *(SaaS ideas only)*
+
+All subagents run independently and can execute in parallel. Collect all results before moving to Phase 3.
 
 ### Phase 3: Synthesize
 - Cluster recurring complaints into pain point themes
@@ -66,7 +77,7 @@ All six run independently and can execute in parallel. Collect all results befor
 ### Phase 6: Write the Report
 - Launch **report-writer** with all synthesized findings from Phases 2-5
 - Include marketing-channel-scout results in the Communities and Channels section
-- Include saas-competitor-analyzer results in the Competitor Landscape section (traffic, keywords, tech stack, SEO, funding)
+- Include saas-competitor-analyzer or app-store-analyst results (whichever was used) in the Competitor Landscape section
 
 ## When to Delegate to Subagents
 
@@ -74,14 +85,14 @@ Use subagents (under `.claude/agents/`) for focused research tasks:
 
 - **idea-vetter**: Forums, Reddit, communities, pain evidence, user complaints, monetization signals
 - **trend-researcher**: Search volume, seasonality, market size, funding rounds, demand trajectory — quantitative signals only, no community research
-- **app-store-analyst**: Competitor apps, ratings, reviews, pricing, revenue estimates
+- **app-store-analyst**: Competitor apps, ratings, reviews, pricing, revenue estimates. **Use only for app ideas** (iOS, Android, mobile).
+- **saas-competitor-analyzer**: Web traffic, keywords, CPC/ad spend, tech stack, SEO metrics, funding signals. **Use only for SaaS/web ideas.** Never launch alongside app-store-analyst — pick one.
 - **marketing-channel-scout**: Reddit communities, YouTube/TikTok/Instagram creators — ranked by engagement rate, audience fit, and estimated cost
 - **tech-feasibility**: Build complexity, APIs, data availability, integrations, technical blockers
-- **saas-competitor-analyzer**: Web traffic, keywords, CPC/ad spend, tech stack, SEO metrics, funding signals for web-based SaaS competitors
 - **report-writer**: Composing the final structured report from all gathered evidence
 - **setup-assistant**: Run on first use or when troubleshooting environment issues
 
-**When vetting an idea, always launch idea-vetter, trend-researcher, app-store-analyst, marketing-channel-scout, tech-feasibility, and saas-competitor-analyzer together in a single message as parallel tool calls.** Never run them sequentially — they are independent and parallelism is essential to performance. Note: app-store-analyst and saas-competitor-analyzer share the Playwright browser — launch app-store-analyst first.
+**When vetting an idea, always launch idea-vetter, trend-researcher, marketing-channel-scout, tech-feasibility, and the appropriate competitor analyst (app-store-analyst OR saas-competitor-analyzer — never both) together in a single message as parallel tool calls.** Never run them sequentially — they are independent and parallelism is essential to performance.
 
 ## Evidence Standards
 
