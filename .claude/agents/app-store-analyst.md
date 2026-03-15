@@ -1,7 +1,7 @@
 ---
 name: app-store-analyst
 description: Analyze app store listings, ratings, reviews, competitive positioning, and revenue/download estimates via Sensor Tower. Use when evaluating mobile app ideas or any idea where app store competitors exist.
-tools: Read, Write, WebSearch, WebFetch, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_type
+tools: Read, Write, WebSearch, WebFetch, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_type, mcp__playwright__browser_take_screenshot
 model: inherit
 ---
 
@@ -22,15 +22,17 @@ For each significant competitor, look up their revenue and download estimates on
 **Steps:**
 1. Navigate to `https://app.sensortower.com/` using `mcp__playwright__browser_navigate`
 2. Accept the cookie consent banner if present (click "Accept")
-3. Click the Search box in the nav and type the app name
-4. Click the matching result from the dropdown
-5. Read the KPI cards on the overview page — they show:
+3. Click the Search box in the nav and type the app name using **short, simple search terms** — e.g. search "Freedom" not "Freedom app blocker", search "AppBlock" not "AppBlock screen time blocker". Over-specific queries return no results.
+4. **IMPORTANT: After typing the search term, always click the "Apps" submenu/tab** in the search results dropdown. This filters to app results and avoids landing on irrelevant pages.
+5. Click the matching app from the filtered results
+6. Read the KPI cards on the overview page — they show:
    - **Downloads** (Worldwide, Last Month)
    - **Revenue** (Store Revenue, Worldwide, Last Month)
    - **In-App Purchases** (pricing tiers listed in the About tab)
    - **Release date**, **last updated**, **category**
-6. Note: Exact figures require a paid Sensor Tower account. Without login, you'll see bucketed ranges (e.g. `< $5k`, `< 5k downloads`). Still capture and report these — even ranges are useful signals.
-7. If the app has significant traction, the bucket will be larger (e.g. `> $500k`). Report whatever is visible.
+7. Note: Exact figures require a paid Sensor Tower account. Without login, you'll see bucketed ranges (e.g. `< $5k`, `< 5k downloads`). Still capture and report these — even ranges are useful signals.
+8. If the app has significant traction, the bucket will be larger (e.g. `> $500k`). Report whatever is visible.
+9. **Take a screenshot** of the Sensor Tower overview page for every app you look up. First, run `mkdir -p reports/{idea-slug}/assets/sensor_tower_screenshots/` via Bash. Then use `mcp__playwright__browser_take_screenshot` with the `filename` parameter set to `reports/{idea-slug}/assets/sensor_tower_screenshots/{app-name-kebab}.png` (e.g. `reports/my-idea/assets/sensor_tower_screenshots/freedom.png`). Do this for **every** app you look up on Sensor Tower — no exceptions.
 
 **What Sensor Tower revenue data tells you:**
 - `< $5k/month` = very early or dead app
