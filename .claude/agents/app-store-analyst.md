@@ -1,7 +1,7 @@
 ---
 name: app-store-analyst
 description: Analyze app store listings, ratings, reviews, competitive positioning, and revenue/download estimates via Sensor Tower. Use when evaluating mobile app ideas or any idea where app store competitors exist.
-tools: Read, Write, WebSearch, WebFetch, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_type, mcp__playwright__browser_take_screenshot
+tools: Read, Write, WebSearch, WebFetch, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_type, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_close
 model: inherit
 ---
 
@@ -84,3 +84,4 @@ Save findings to `reports/{idea-slug}/app-store-analysis.md`. The idea-slug will
 - Distinguish between iOS and Android data when relevant
 - Always report Sensor Tower data even when bucketed — `< $5k` is a meaningful signal
 - If Sensor Tower search returns no results for an app, note that and move on
+- **IMPORTANT: When you are completely done with all Sensor Tower lookups, close the browser using `mcp__playwright__browser_close`.** This is required so that other agents can use the browser after you. Do not leave the browser open.
