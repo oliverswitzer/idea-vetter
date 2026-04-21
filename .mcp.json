@@ -14,6 +14,10 @@
       "command": "uvx",
       "args": ["mcp-pandoc"],
       "_comment": "Document conversion (Markdown to PDF, DOCX, HTML). Requires: brew install pandoc"
+    },
+    "mirroir": {
+      "command": "npx",
+      "args": ["mirroir-mcp"]
     }
   }
 }
